@@ -1,0 +1,48 @@
+# 执行日志统一在 log/cronJob-[jobName].log
+job1Name:
+  # 开关
+  enable: true
+  # 执行命令路径
+  cwd: 'D:/code'
+  # 执行命令
+  cmd: 'dir'
+  # 超时/秒
+  timeoutSec: 10
+  # 定时设置
+  crontab:
+    # 每分钟的第几秒执行该任务
+    second:
+    # 每个小时的第几分钟执行该任务
+    minute:
+    # 每天的第几个小时执行该任务
+    hour:
+    # 每月的第几天执行该任务
+    day:
+    # 每年的第几个月执行该任务
+    month:
+    # 每周的第几天执行该任务
+    weekday:
+
+job2Name:
+  # 开关
+  enable: true
+  # 执行命令路径
+  cwd: 'D:/code'
+  # 执行命令
+  cmd: 'python -m pip list'
+  # 超时/秒
+  timeoutSec: 10
+  # 定时设置
+  crontab:
+    # 每分钟的第几秒执行该任务
+    second:
+    # 每个小时的第几分钟执行该任务
+    minute:
+    # 每天的第几个小时执行该任务
+    hour:
+    # 每月的第几天执行该任务
+    day:
+    # 每年的第几个月执行该任务
+    month:
+    # 每周的第几天执行该任务
+    weekday:

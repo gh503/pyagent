@@ -1,0 +1,114 @@
+# 请勿随意修改此配置文件，由系统调用
+# 修改配置重启服务
+
+# server api(由worker调用)
+server:
+  # 生产环境服务
+  #url: 'http://172.16.112.43:8250/YLIP'
+  # 测试服务
+  url: 'http://127.0.0.1:3000'
+  # 与worker通信认证
+  username: 'username'
+  password: 'password'
+
+  ## 上报任务状态
+  report:
+    url: '/job/report'
+    method: 'post'
+    header:
+      'Content-Type': 'application/json'
+      'Connection': 'close'
+    param:
+    body:
+      username:
+      password:
+      job:
+        # taskId-taskTimeStamp-jobType
+        id:
+        # 执行命令
+        cmd:
+        # 本地进程ID
+        pid:
+        # waiting/running/timeout/finished/stopped
+        status:
+        # success/fail/error
+        result:
+        code:
+        return:
+        start:
+        end:
+        realStart:
+        realEnd:
+        timeoutSec:
+        # 执行agent
+        agent:
+    expected:
+      code: 200
+      success: 'true'
+
+# worker api(由server调用)
+worker:
+  # 使用worker对外IP
+  url: 'http://127.0.0.1:8080'
+  # 与server通信认证
+  username: 'username'
+  password: 'password'
+  # 服务运行主目录
+  workspace: 'D:/worker'
+  # 任务主目录
+  job:
+    path: 'jobs'
+    new: 'created'
+    wait: 'waiting'
+    run: 'running'
+    done: 'done'
+    stop: 'stop'
+  # 并发任务数
+  max_number_job:
+
+  ## 下发任务
+  jobNew:
+    url: '/job/new'
+    method: 'post'
+    header:
+      'Content-Type': 'application/json'
+    param:
+    body:
+      username:
+      password:
+      # 子任务信息
+      job:
+        # 前台任务ID: taskId
+        # 前台任务开始时间戳: taskTimeStamp
+        # 后台任务类型: jobType
+        # taskId-taskTimeStamp-jobType
+        id:
+        # 执行命令
+        cmd:
+        # 执行超时/秒(0 表示不超时)
+        timeoutSec:
+        # (任务调度)立即执行/设定时间/等待时间
+        triggle:
+    expected:
+      code: 200
+      success: 'true'
+
+  ## 停止任务
+  jobStop:
+    url: '/job/stop'
+    method: 'post'
+    header:
+      'Content-Type': 'Application/json'
+    param:
+    body:
+      username:
+      password:
+      job:
+        id:
+    expected:
+      code: 200
+      success: 'true'
+      result:
+        job:
+          id:
+          status: 'stopped'

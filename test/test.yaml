@@ -1,0 +1,36 @@
+job:
+  - id: "taskID1-taskTimeStamp1-download"
+    cmd: "curl www.baidu.com"
+    timeoutSec: 0
+    triggle: "now"
+    enable: true
+
+  - id: "taskID2-taskTimeStamp1-download"
+    cmd: "c: && cd C:/ && dir"
+    timeoutSec: 0
+    triggle: "now"
+    enable: true
+
+  - id: "taskID3-taskTimeStamp1-download"
+    cmd: "pwd"
+    timeoutSec: 0
+    triggle: "now"
+    enable: true
+
+  - id: "taskID4-taskTimeStamp1-collect"
+    cmd: "wmic cpu get Caption,Architecture,AddressWidth,Name"
+    timeoutSec: 10
+    triggle: "now"
+    enable: true
+
+  - id: "taskID5-taskTimeStamp1-download"
+    cmd: "dir"
+    timeoutSec: 0
+    triggle: "now"
+    enable: true
+
+  - id: "mirrors-ubuntu22.04-download"
+    cmd: "curl -s https://repo.huaweicloud.com/ubuntu-releases/22.04.3/ubuntu-22.04.3-desktop-amd64.iso -o ubuntu-22.04.3-desktop-amd64.iso"
+    timeoutSec: 0
+    triggle: "now"
+    enable: false
